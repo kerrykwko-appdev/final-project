@@ -1,0 +1,42 @@
+<h1>
+  Skintone #<%= @skintone.id %> details
+</h1>
+
+<a href="/skintones/<%= @skintone.id %>/edit">
+  Edit skintone
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Color
+  </dt>
+  <dd>
+    <%= @skintone.color %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@skintone.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@skintone.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_skintone/<%= @skintone.id %>">
+  Delete skintone
+</a>
+
+<hr>
+
+<a href="/skintones">
+  Go back
+</a>

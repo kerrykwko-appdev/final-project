@@ -1,0 +1,55 @@
+<h1>
+  Get Inspired!
+</h1>
+
+<hr>
+
+<div class="row">
+<% @photos.each do |photo| %>
+    <div class="col-md-4 mb-3"> 
+        <div class="card" style ="height: 100%;">
+          <img class="card-img-top" src="<%=photo.image%>">
+          <div class="card-body">
+            <!--<p class="card-text">-->
+              
+              <%if Like.exists?({ :user_id => current_user.id, :product_id => photo.product_id}) %> 
+                  <div>
+                  <a href="/delete_like/<%= Like.where({ :user_id => current_user.id, :product_id => photo.product_id}).first.id %>">
+                      <i class="fas fa-trash"></i> Remove from Wishlist
+                  </a>
+                  </div>
+              <% else %> 
+                  <div>
+                  <form action="/create_like" method="post">
+                      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                      <input type="hidden" name="product_id" value="<%= photo.product_id %>">
+                    <button type="submit" class="btn btn-link"><i class="far fa-heart"></i> Add to Wishlist</button>
+                  </form>
+                  </div>
+              <%end%>
+              
+              <br>
+
+              <a href = "/users/<%=photo.user_id%>" class="text-primary">
+              <strong><%=User.find(photo.user_id).username.titlecase%></strong>
+              </a>
+              
+              <a href = "/products/<%=photo.product_id%>" class="text-muted"> 
+                <%= Product.find(photo.product_id).brand %> 
+                <%= Product.find(photo.product_id).item %>
+                <%= Product.find(photo.product_id).shade %>
+              </a>    
+                  
+          </div>
+      </div>
+    </div>
+<% end %> 
+</div>
+
+
+          
+          
+          
+          
+          
+          

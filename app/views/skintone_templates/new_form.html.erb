@@ -1,0 +1,37 @@
+<!-- Validation failure messages -->
+<% if @skintone.present? %>
+  <% if @skintone.errors.any? %>
+    <% @skintone.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new skintone
+</h1>
+
+<hr>
+
+<form action="/create_skintone" method="post">
+  <!-- Label and input for color -->
+  <div class="form-group">
+    <label for="color">
+      Color
+    </label>
+
+    <input type="text" id="color" name="color" class="form-control" value="<%= @skintone.try(:color) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create skintone
+  </button>
+</form>
+
+<hr>
+
+<a href="/skintones">
+  Go back
+</a>

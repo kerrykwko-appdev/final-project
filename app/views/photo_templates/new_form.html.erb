@@ -1,0 +1,61 @@
+<!-- Validation failure messages -->
+<% if @photo.present? %>
+  <% if @photo.errors.any? %>
+    <% @photo.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a Photo
+</h1>
+
+<hr>
+
+<form action="/create_photo" method="post">
+  <!-- Label and input for skintone_id -->
+  <div class="form-group">
+  
+    <input type="hidden" id="skintone_id" name="skintone_id" value="<%= current_user.skintone_id %>">
+    
+  </div>
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+   
+  </div>
+
+  <!-- Label and input for image -->
+  <div class="form-group">
+    <label for="image">
+      Image
+    </label>
+
+    <input type="text" id="image" name="image" class="form-control" value="<%= @photo.try(:image) %>">
+  </div>
+
+  <!-- Label and input for product_id -->
+  <div class="form-group">
+    <label for="product_id">
+      Product
+    </label>
+
+    <%= select_tag("product_id", options_from_collection_for_select(Product.all, :id, :full_product), :class => "form-control") %>
+  </div>
+  <div>
+    or <a href="/products/new">Add a New Product First</a>
+  </div>
+
+  <button class="btn btn-block btn-primary mt-3">
+    Create Photo
+  </button>
+</form>
+
+<hr>
+
+<a href="/photos">
+  Go back
+</a>

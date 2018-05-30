@@ -1,0 +1,58 @@
+<h1>
+  All skintones
+</h1>
+
+<a href="/skintones/new">
+  Add a new skintone
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Color
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @skintones.each do |skintone| %>
+  <tr>
+    <td>
+      <%= skintone.id %>
+    </td>
+
+    <td>
+      <%= skintone.color %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(skintone.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(skintone.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/skintones/<%= skintone.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

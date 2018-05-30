@@ -1,0 +1,56 @@
+<h1>
+  Product #<%= @product.id %> details
+</h1>
+
+<a href="/products/<%= @product.id %>/edit">
+  Edit product
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Brand
+  </dt>
+  <dd>
+    <%= @product.brand %>
+  </dd>
+
+  <dt>
+    Item
+  </dt>
+  <dd>
+    <%= @product.item %>
+  </dd>
+
+  <dt>
+    Shade
+  </dt>
+  <dd>
+    <%= @product.shade %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@product.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@product.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_product/<%= @product.id %>">
+  Delete product
+</a>
+
+<hr>
+
+<a href="/products">
+  Go back
+</a>

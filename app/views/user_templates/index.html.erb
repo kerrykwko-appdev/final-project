@@ -1,0 +1,49 @@
+<h1>
+  Users
+</h1>
+
+<hr>
+
+
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Username
+    </th>
+
+    <th>
+      Points
+    </th>
+    
+    <th>
+    </th>
+    
+  </tr>
+
+  <% @users.each do |user| %>
+  <tr>
+    <td>
+      <%= user.id %>
+    </td>
+
+    <td>
+      <%= user.username.titlecase %>
+    </td>
+
+    <td>
+      <%=Photo.where({:user_id => user.id}).count%> 
+    </td>
+
+    <td>
+      <a href="/users/<%= user.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

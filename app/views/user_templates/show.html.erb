@@ -1,0 +1,58 @@
+<h1>
+  <%= User.find(@user.id).username.titlecase %>'s Profile
+</h1>
+
+<hr>
+
+<dl>
+  <dt>
+    Skintone
+  </dt>
+  <dd>
+    <%= Skintone.find(@user.skintone_id).color %>
+  </dd>
+  
+  <dt>
+    Points
+  </dt>
+  <dd>
+    <%=Photo.where({:user_id => @user.id}).count %>
+  </dd>
+  
+  
+  <dt>
+    Membership
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@user.created_at) %>
+  </dd>
+  
+</dl>
+<hr>
+
+<% Photo.where({:user_id => @user.id}).each do |photo| %>
+
+    <div class="card mb-3" style="width: 20rem;">
+      <img class="card-img-top" src="<%=photo.image%>">
+      <div class="card-body">
+        <p class="card-text text-center">
+          <a href = "/users/<%=photo.user_id%>" class="text-primary">
+          <%=User.find(photo.user_id).username.titlecase%>
+          </a>
+          
+          <a href = "/products/<%=photo.product_id%>" class="text-muted"> 
+            <%= Product.find(photo.product_id).brand %> 
+            <%= Product.find(photo.product_id).item %>
+            <%= Product.find(photo.product_id).shade %>
+          </a>
+          
+        </p>
+      </div>
+    </div>
+
+<%end%>
+
+
+<a href="/photos">
+  Go back
+</a>

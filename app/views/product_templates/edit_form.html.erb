@@ -1,0 +1,53 @@
+<!-- Validation failure messages -->
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit product #<%= @product.id %>
+</h1>
+
+<hr>
+
+<form action="/update_product/<%= @product.id %>" method="post">
+  <!-- Label and input for brand -->
+  <div class="form-group">
+    <label for="brand">
+      Brand
+    </label>
+
+    <input type="text" id="brand" name="brand" class="form-control" value="<%= @product.brand %>">
+  </div>
+
+  <!-- Label and input for item -->
+  <div class="form-group">
+    <label for="item">
+      Item
+    </label>
+
+    <input type="text" id="item" name="item" class="form-control" value="<%= @product.item %>">
+  </div>
+
+  <!-- Label and input for shade -->
+  <div class="form-group">
+    <label for="shade">
+      Shade
+    </label>
+
+    <input type="text" id="shade" name="shade" class="form-control" value="<%= @product.shade %>">
+  </div>
+
+  <button class="btn btn-block btn-primary">
+    Update product
+  </button>
+</form>
+
+<hr>
+
+<a href="/products">
+  Go back
+</a>

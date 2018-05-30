@@ -1,0 +1,35 @@
+<!-- Validation failure messages -->
+<% if @skintone.errors.any? %>
+  <% @skintone.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit skintone #<%= @skintone.id %>
+</h1>
+
+<hr>
+
+<form action="/update_skintone/<%= @skintone.id %>" method="post">
+  <!-- Label and input for color -->
+  <div class="form-group">
+    <label for="color">
+      Color
+    </label>
+
+    <input type="text" id="color" name="color" class="form-control" value="<%= @skintone.color %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update skintone
+  </button>
+</form>
+
+<hr>
+
+<a href="/skintones">
+  Go back
+</a>

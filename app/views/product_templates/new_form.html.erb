@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @product.present? %>
+  <% if @product.errors.any? %>
+    <% @product.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new product
+</h1>
+
+<hr>
+
+<form action="/create_product" method="post">
+  <!-- Label and input for brand -->
+  <div class="form-group">
+    <label for="brand">
+      Brand
+    </label>
+
+    <input type="text" id="brand" name="brand" class="form-control" value="<%= @product.try(:brand) %>">
+  </div>
+
+  <!-- Label and input for item -->
+  <div class="form-group">
+    <label for="item">
+      Item
+    </label>
+
+    <input type="text" id="item" name="item" class="form-control" value="<%= @product.try(:item) %>">
+  </div>
+
+  <!-- Label and input for shade -->
+  <div class="form-group">
+    <label for="shade">
+      Shade
+    </label>
+
+    <input type="text" id="shade" name="shade" class="form-control" value="<%= @product.try(:shade) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create product
+  </button>
+</form>
+
+<hr>
+
+<a href="/products">
+  Go back
+</a>
