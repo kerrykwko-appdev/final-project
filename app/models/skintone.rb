@@ -11,4 +11,8 @@
 class Skintone < ApplicationRecord
     has_many :users, :dependent => :destroy
     has_many :photos, :dependent => :destroy
+    
+    validates :color, presence: true
+    
+    
 end

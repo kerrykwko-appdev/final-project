@@ -29,6 +29,9 @@
     <th>
       Shade
     </th>
+  
+    <th>
+    </th>
 
     <th>
     </th>
@@ -48,6 +51,25 @@
     <td>
       <%= product.shade %>
     </td>
+    
+    <td>
+      <%if Like.exists?({ :user_id => current_user.id, :product_id => product.id}) %> 
+                  <div>
+                  <a href="/delete_like/<%= Like.where({ :user_id => current_user.id, :product_id => product.id}).first.id %>">
+                      <i class="fas fa-trash"></i> Remove from Wishlist
+                  </a>
+                  </div>
+              <% else %> 
+                  <div>
+                  <form action="/create_like" method="post">
+                      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                      <input type="hidden" name="product_id" value="<%= product.id %>">
+                    <button type="submit" class="btn btn-link btn-sm"><i class="far fa-heart"></i> Add to Wishlist</button>
+                  </form>
+                  </div>
+              <%end%>
+    </td>
+    
 
     <td>
       <a href="/products/<%= product.id %>">

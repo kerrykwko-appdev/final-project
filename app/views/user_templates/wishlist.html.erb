@@ -2,7 +2,7 @@
   <%=current_user.username.titlecase%>'s Wishlist 
 </h1>
 
-<hr>
+<br>
 
 <table class="table">
   <tr>
@@ -24,7 +24,7 @@
     </td>
     
     <td>
-        <a href="/delete_like/<%=like.product_id%>"><i class="fas fa-trash"></i></a>
+        <a href="/delete_like/<%=like.id%>"><i class="fas fa-trash"></i></a>
     </td>
   </tr>
   <% end %>

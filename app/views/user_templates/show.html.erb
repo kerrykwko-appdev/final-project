@@ -65,9 +65,17 @@
                 <%= Product.find(photo.product_id).item %>
                 <%= Product.find(photo.product_id).shade %>
               </a>    
-                  
+
+              
+
           </div>
+           <%if current_user.id==@user.id %> 
+              <a href="/delete_photo/<%=photo.id%>">     
+              <button type="button" class="btn btn-outline-danger btn-block">Delete Photo</button> 
+              </a>
+           <%end%> 
       </div>
+
     </div>
 
 <%end%>

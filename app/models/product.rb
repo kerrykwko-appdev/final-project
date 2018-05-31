@@ -14,6 +14,10 @@ class Product < ApplicationRecord
     has_many :photos, :dependent => :destroy
     has_many :likes, :dependent => :destroy
     
+    validates :brand, presence: true
+    validates :item, presence: true
+    validates :shade, presence: true
+    
     def full_product
         "#{brand} #{item} #{shade}"
     end
