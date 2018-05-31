@@ -14,7 +14,7 @@
   <div class="field">
     <%#= f.label :skintone_id %><br />
     <%#= f.text_field :skintone_id, autocomplete: "skintone_id" %>
-     <%= f.select :skintone_id, options_for_select([["Light", 1], ["Medium", 2],["Dark",3]]) %>
+     <%= f.collection_select(:skintone_id, Skintone.all, :id, :color) %>
   </div>
   
 

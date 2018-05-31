@@ -87,4 +87,6 @@ Rails.application.routes.draw do
   get("/my_wishlist",{:controller => "users", :action =>"wishlist"})
   get("/my_skintone",{:controller => "users", :action =>"skintone"})
   
+  get("/products/:id_to_display/my_skintone",{:controller =>"products", :action =>"skintone"})
+  
 end

@@ -1,17 +1,19 @@
 <h1>
-  Get Inspired! 
+  <%=@product.full_product %>
 </h1>
 
 <br>
 <div class="btn-group" role="group">
-  <a href="/photos"><button type="button" class="btn btn-outline-info">All Skintones</button></a>
-  <a href="/my_skintone"><button type="button" class="btn btn-info">My Skintone</button></a>
+  <a href="/products/<%=@product.id%>"><button type="button" class="btn btn-outline-info">All Skintones</button></a>
+  <a href="/products/<%=@product.id%>/my_skintone"><button type="button" class="btn btn-info">My Skintone</button></a>
 </div>
+
 
 <hr>
 
+
 <div class="row">
-<% Photo.where({ :skintone_id => current_user.skintone_id}).each do |photo| %>
+<% Photo.where({ :product_id => @product.id, :skintone_id => current_user.skintone_id}).each do |photo| %>
     <div class="col-md-4 mb-3"> 
         <div class="card" style ="height: 100%;">
           <img class="card-img-top" src="<%=photo.image%>">
@@ -56,6 +58,17 @@
           
           
           
-          
-          
-          
+
+<a href="/products/<%= @product.id %>/edit">
+  Edit product
+</a>
+<br>
+<a href="/delete_product/<%= @product.id %>">
+  Delete product
+</a>
+
+<hr>
+
+<a href="/products">
+  Go back
+</a>

@@ -12,8 +12,7 @@
     <%= f.text_field :username, autocomplete: "username" %>
   </div>
   <div class="field">
-    <%= f.label :skintone_id %><br />
-    <%= f.text_field :skintone_id, autocomplete: "skintone_id" %>
+    <%= f.collection_select(:skintone_id, Skintone.all, :id, :color) %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

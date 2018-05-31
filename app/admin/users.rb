@@ -1,5 +1,5 @@
-ActiveAdmin.register User do
-  permit_params :email, :password, :skintone_id, :username
+ActiveAdmin.register Photo do
+  permit_params :skintone_id, :image, :product_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

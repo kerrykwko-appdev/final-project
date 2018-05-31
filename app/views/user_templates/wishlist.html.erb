@@ -20,11 +20,11 @@
   
   <tr>
     <td>
-      <%= Product.find(like.product_id).full_product %>
+      <a href="/products/<%=like.product_id%>"><%= Product.find(like.product_id).full_product %></a>
     </td>
     
     <td>
-        Test
+        <a href="/delete_like/<%=like.product_id%>"><i class="fas fa-trash"></i></a>
     </td>
   </tr>
   <% end %>

@@ -60,4 +60,12 @@ class ProductsController < ApplicationController
 
     redirect_to("/products", :notice => "Product deleted successfully.")
   end
+  
+  def skintone
+    @product = Product.find(params.fetch("id_to_display"))
+
+    render("product_templates/my_skintone.html.erb")
+  end
+  
+  
 end

@@ -8,11 +8,15 @@
 
 <hr>
 
+
+
+
+
+
+
+
 <table class="table">
   <tr>
-    <th>
-      ID
-    </th>
 
     <th>
       Brand
@@ -27,23 +31,12 @@
     </th>
 
     <th>
-      Created at
-    </th>
-
-    <th>
-      Updated at
-    </th>
-
-    <th>
     </th>
   </tr>
 
   <% @products.each do |product| %>
   <tr>
-    <td>
-      <%= product.id %>
-    </td>
-
+    
     <td>
       <%= product.brand %>
     </td>
@@ -57,16 +50,8 @@
     </td>
 
     <td>
-      <%= time_ago_in_words(product.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(product.updated_at) %> ago
-    </td>
-
-    <td>
       <a href="/products/<%= product.id %>">
-        Show details
+        View Swatches
       </a>
     </td>
   </tr>
